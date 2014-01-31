@@ -2,18 +2,18 @@ require './testJan31st.rb'
 
 describe "Reopen array class" do
 
-	it "should return a string" do
-		fred = Array.new
-    expect(fred.bollocks).to eq('bollocks to you')
-	end	
+  it "should return a string" do
+	fred = Array.new
+      expect(fred.bollocks).to eq('bollocks to you')
+  end	
 end
 
 describe "subclass array class" do
 
-    it "should again return a string" do
-	  george = Bill.new
+  it "should again return a string" do
+    george = Bill.new
     expect(george.henry).to eq('No more swearing, please')
-	end	
+  end	
 end
 
 # ============================ Inject method rewrite
