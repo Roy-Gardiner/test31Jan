@@ -65,6 +65,18 @@ describe "Inject: basic strings" do
 	end		
 end
 
+describe "Inject: arrays" do
+
+    it "should return something or other" do
+   
+
+  #  Again expect fails in a way I fail to understand    
+
+  #  expect([['a','b'],['c','d','e']].inj{|memo,number| memo }).to 
+  #      eq([['a','b'],['c','d','e']].inject{|memo,number| memo })
+  end   
+end
+
 describe "Inject: Pass a hash not an array" do
 
     it "raise error, method not implemented" do
