@@ -21,14 +21,14 @@ end
 describe "Inject: no block or array" do
 
     it "should give back nil value" do
-    expect([].inj{}).to eq(nil)
+    expect([].inj{}).to eq([].inject{})
 	end	
 end
 
 describe "Inject: array but no block" do
 
     it "should give back the argument" do
-    expect(['aaa'].inj{}).to eq('aaa')
+    expect(['aaa'].inj{}).to eq(['aaa'].inject{})
 	end	
 end
 
@@ -38,7 +38,9 @@ describe "Inject: basic string" do
 	  
     expect(['cat', 'sheep', 'bear'].inj{|memo,word| 
     	memo.length > word.length ? memo : word
-    	}).to eq('sheep')
+    	}).to eq(['cat', 'sheep', 'bear'].inject{|memo,word| 
+      memo.length > word.length ? memo : word
+      })
 	end
 end
 
@@ -47,6 +49,11 @@ describe "Inject: basic numbers" do
     it "should return numbers summed" do
 	  
     expect([1,4,8,10].inj{|memo,number| memo + number }).to eq(23)
+
+  
+  # Trying to put the same test wwith 'inject' into expect gives:
+  # ArgumentError:
+  #    The expect syntax does not support operator matchers, so you must pass a matcher to `#to`.
 	end		
 end
 
@@ -63,5 +70,6 @@ describe "Inject: Pass a hash not an array" do
     it "raise error, method not implemented" do
 	  
     expect{{1 =>1, 2 => 2}.inj{|memo,number| memo + number }}.to raise_error(NoMethodError)
+
 	end		
 end
